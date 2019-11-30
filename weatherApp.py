@@ -1,5 +1,6 @@
 import tkinter as tk
 import requests
+import os
 
 HEIGHT = 700
 WIDTH = 800
@@ -32,7 +33,7 @@ def format_responses(weather):
 
 
 def get_weather(city):
-    weather_key = '227d764650f5005402e77a6204329aab'
+    weather_key = os.environ.get('weather_key')
     url = 'https://api.openweathermap.org/data/2.5/forecast'
     params = {'APPID': weather_key, 'q': city, 'units': 'metric'}
     responses = requests.get(url, params = params)
